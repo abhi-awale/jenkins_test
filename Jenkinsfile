@@ -17,7 +17,7 @@ pipeline {
             steps {
                 // Run tests inside PHP container
                 // Assuming test_add.php and add.php are in repo root
-                sh 'php /app/test_add.php'
+                sh 'php test_add.php'
             }
         }
     }
