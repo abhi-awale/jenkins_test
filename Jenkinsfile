@@ -1,8 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'php:8.2-cli'  // Official PHP CLI Docker image
-            args '-v $PWD:/app'  // Mount current workspace to /app inside container
+            image 'php:8.2-cli' // Use PHP 8.2 CLI Docker image
         }
     }
 
@@ -16,8 +15,8 @@ pipeline {
         stage('Test') {
             steps {
                 // Run tests inside PHP container
-                // Assuming test_add.php and add.php are in repo root
-                sh 'php test_add.php'
+                // Assuming test_index.php and index.php are in repo root
+                sh 'php test_index.php'
             }
         }
     }

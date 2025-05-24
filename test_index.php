@@ -1,5 +1,5 @@
 <?php
-require 'add.php';
+require 'index.php';
 
 // Enable assertions
 assert_options(ASSERT_ACTIVE, 1);
