@@ -1,11 +1,30 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'php:8.2-cli'  // Official PHP CLI Docker image
+            args '-v $PWD:/app'  // Mount current workspace to /app inside container
+        }
+    }
 
     stages {
-        stage('Hello') {
+        stage('Checkout') {
             steps {
-                echo 'Hello World'
+                checkout scm
             }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests inside PHP container
+                // Assuming test_add.php and add.php are in repo root
+                sh 'php /app/test_add.php'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
         }
     }
 }
